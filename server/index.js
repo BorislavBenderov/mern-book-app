@@ -2,11 +2,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import postRoutes from './routes/posts.js';
 
 const app = express();
 dotenv.config();
 mongoose.set('strictQuery', false);
+
+app.use('/posts', postRoutes);
 
 const connect = async () => {
     try {
