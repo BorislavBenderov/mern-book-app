@@ -16,6 +16,7 @@ export const register = async (req, res) => {
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const result = await User.create({ email, password: hash });
+
         const token = jwt.sign(
             { id: result._id, email: result.email },
             process.env.JWT
@@ -29,6 +30,8 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
+        const { email, password } = req.body;
+
         const user = await User.findOne({ email });
 
         if (!user) return res.status(404).json({ message: 'User not found!' });
