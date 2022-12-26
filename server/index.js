@@ -3,13 +3,12 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import postRoutes from './routes/posts.js';
+import postRoute from './routes/posts.js';
+import authRoute from './routes/auth.js';
 
 const app = express();
 dotenv.config();
 mongoose.set('strictQuery', false);
-
-app.use('/posts', postRoutes);
 
 const connect = async () => {
     try {
@@ -24,9 +23,14 @@ mongoose.connection.on('disconnected', () => {
     console.log('mongoDB disconnected!');
 });
 
+//middlewares
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+app.use('/posts', postRoute);
+app.use('/auth', authRoute);
 
 app.listen(process.env.PORT, () => {
     connect();
