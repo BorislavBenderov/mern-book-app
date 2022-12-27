@@ -7,6 +7,7 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 import { Register } from "./pages/register/Register";
 import { CreateBook } from "./pages/create-book/CreateBook";
 import { BookContextProvider } from "./contexts/BookContext";
+import { BookDetails } from "./pages/book-details/BookDetails";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/create" element={<CreateBook />} />
+            <Route path="/books/:bookId" element={<BookDetails />} />
           </Routes>
           <Footer />
         </div>
