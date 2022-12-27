@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { Register } from "./pages/register/Register";
 import { CreateBook } from "./pages/create-book/CreateBook";
+import { EditBook } from './pages/edit-book/EditBook';
 import { BookContextProvider } from "./contexts/BookContext";
 import { BookDetails } from "./pages/book-details/BookDetails";
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/create" element={<CreateBook />} />
             <Route path="/books/:bookId" element={<BookDetails />} />
+            <Route path="/edit/books/:bookId" element={<EditBook />} />
           </Routes>
           <Footer />
         </div>
