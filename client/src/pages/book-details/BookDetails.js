@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BookContext } from "../../contexts/BookContext";
 
 export const BookDetails = () => {
     const { books } = useContext(BookContext);
     const { bookId } = useParams();
 
-    const currentBook = books?.find(book => book._id === bookId);
+    const currentBook = books.find(book => book._id === bookId);
 
     return (
         <section className="flex w-4/5 m-auto">
@@ -25,8 +25,10 @@ export const BookDetails = () => {
                     <p>Type: {currentBook?.type}</p>
                 </div>
 
-                <div className="">
+                <div className="flex justify-around">
+                    <Link to={`/edit/books/${currentBook?._id}`}>Edit</Link>
                     <p>Likes</p>
+                    <Link>Delete</Link>
                 </div>
 
                 <div className="flex flex-col overflow-auto h-80 border-y-2 border-solid">
