@@ -6,20 +6,23 @@ import { Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { Register } from "./pages/register/Register";
 import { CreateBook } from "./pages/create-book/CreateBook";
+import { BookContextProvider } from "./contexts/BookContext";
 
 function App() {
   return (
     <AuthContextProvider>
-      <div className='max-w-6xl m-auto'>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/create" element={<CreateBook />} />
-        </Routes>
-        <Footer />
-      </div>
+      <BookContextProvider>
+        <div className='max-w-6xl m-auto'>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/create" element={<CreateBook />} />
+          </Routes>
+          <Footer />
+        </div>
+      </BookContextProvider>
     </AuthContextProvider>
   );
 }
