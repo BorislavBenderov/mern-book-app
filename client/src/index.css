@@ -18,3 +18,11 @@ a {
 * {
     box-sizing: border-box;
 }
+
+form * {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
