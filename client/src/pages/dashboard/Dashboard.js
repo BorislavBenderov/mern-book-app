@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import BOOK from '../../assets/book.jpg';
 import { BookCard } from '../../components/book-card/BookCard';
+import { BookContext } from '../../contexts/BookContext';
 
 export const Dashboard = () => {
+    const { books } = useContext(BookContext);
+
     return (
         <>
             <section className="mb-16">
@@ -18,7 +22,9 @@ export const Dashboard = () => {
             </section>
             <section className="mb-16">
                 <div className="grid grid-cols-7 gap-8 mb-16">
-                    <BookCard />
+                    {books.length > 0
+                        ? books.map(book => <BookCard key={book._id} book={book} />)
+                        : <p>No Books in Database!</p>}
                 </div>
             </section>
         </>

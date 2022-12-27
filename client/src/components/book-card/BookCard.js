@@ -1,17 +1,17 @@
-export const BookCard = () => {
+export const BookCard = ({book}) => {
     return (
         <div className="">
             <div className="mb-2 overflow-hidden">
                 <img
-                    src='https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg'
-                    alt=""
+                    src={book.image}
+                    alt="book"
                     className="rounded-2xl"
                 />
             </div>
             <div className="">
-                <h3 className="text-xl font-semibold">Harry Potter</h3>
+                <h3 className="text-xl font-semibold">{book.title}</h3>
                 <div className="">
-                    <span className="">Action</span>
+                    <span className="">{book.description}</span>
                 </div>
             </div>
         </div>
