@@ -2,9 +2,11 @@ import { createPost } from "../../api";
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { BookContext } from "../../contexts/BookContext";
 
 export const CreateBook = () => {
     const { loggedUser } = useContext(AuthContext);
+    const { onCreatedBook } = useContext(BookContext);
     const navigate = useNavigate();
 
     const onCreate = (e) => {
@@ -23,7 +25,8 @@ export const CreateBook = () => {
         };
 
         createPost(bookData)
-            .then(() => {
+            .then((newBook) => {
+                onCreatedBook(newBook.data);
                 navigate('/');
             })
             .catch((err) => {
