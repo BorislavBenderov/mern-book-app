@@ -30,10 +30,29 @@ export const BookContextProvider = ({ children }) => {
         setBooks(state => state.filter(book => book._id !== bookId));
     }
 
+    const onLikeBook = (userId, bookId) => {
+        setBooks(state => {
+            const book = state.find(x => x._id === bookId);
+            const likes = book.likes || [];
+
+            if (book.likes.includes(userId)) {
+                const i = book.likes.indexOf(userId);
+                likes.splice(i, 1);
+            } else {
+                likes.push(userId);
+            }
+
+            return [
+                ...state.filter(x => x._id !== bookId),
+                { ...book, likes }
+            ]
+        })
+    }
+
 
 
     return (
-        <BookContext.Provider value={{ books, onCreatedBook, onEditedBook, onDeleteBook }}>
+        <BookContext.Provider value={{ books, onCreatedBook, onEditedBook, onDeleteBook, onLikeBook }}>
             {children}
         </BookContext.Provider>
     );
