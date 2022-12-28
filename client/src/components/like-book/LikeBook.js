@@ -19,9 +19,9 @@ export const LikeBook = ({ book }) => {
     }
 
     return (
-        <i className={`fa fa-heart${!book?.likes?.includes(loggedUser?.result._id) ? '-o' : ''} fa-lg`}
-            style={{ cursor: 'pointer', color: book?.likes?.includes(loggedUser?.result._id) ? 'red' : null }}
+        <i className={`fa fa-heart${!book?.likes?.includes(loggedUser?.result?._id) ? '-o' : ''} fa-lg`}
+            style={{ cursor: 'pointer', color: book?.likes?.includes(loggedUser?.result?._id) ? 'red' : null }}
             onClick={onLike}
-        ></i>
+        >{book?.likes?.length}</i>
     );
 }
