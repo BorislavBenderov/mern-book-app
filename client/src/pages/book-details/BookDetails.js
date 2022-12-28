@@ -1,12 +1,29 @@
 import { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BookContext } from "../../contexts/BookContext";
+import { deletePost } from "../../api";
 
 export const BookDetails = () => {
-    const { books } = useContext(BookContext);
+    const { books, onDeleteBook } = useContext(BookContext);
     const { bookId } = useParams();
+    const navigate = useNavigate();
 
     const currentBook = books.find(book => book._id === bookId);
+
+    const onDelete = () => {
+        const confirmation = window.confirm('Are you sure you want to delete this post?');
+
+        if (confirmation) {
+            deletePost(bookId)
+                .then(() => {
+                    onDeleteBook(bookId);
+                    navigate('/');
+                })
+                .catch((err) => {
+                    alert(err.message);
+                })
+        }
+    }
 
     return (
         <section className="flex w-4/5 m-auto">
@@ -28,7 +45,7 @@ export const BookDetails = () => {
                 <div className="flex justify-around">
                     <Link to={`/edit/books/${currentBook?._id}`}>Edit</Link>
                     <p>Likes</p>
-                    <Link>Delete</Link>
+                    <Link onClick={onDelete}>Delete</Link>
                 </div>
 
                 <div className="flex flex-col overflow-auto h-80 border-y-2 border-solid">
