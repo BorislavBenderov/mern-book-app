@@ -3,9 +3,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { BookContext } from "../../contexts/BookContext";
 import { deletePost } from "../../api";
 import { LikeBook } from "../../components/like-book/LikeBook";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const BookDetails = () => {
     const { books, onDeleteBook } = useContext(BookContext);
+    const { loggedUser } = useContext(AuthContext);
     const { bookId } = useParams();
     const navigate = useNavigate();
 
@@ -44,9 +46,14 @@ export const BookDetails = () => {
                 </div>
 
                 <div className="flex justify-around">
-                    <Link to={`/edit/books/${currentBook?._id}`}>Edit</Link>
-                    <LikeBook book={currentBook} />
-                    <Link onClick={onDelete}>Delete</Link>
+                    {loggedUser?.result?._id
+                        ? <>
+                            <Link to={`/edit/books/${currentBook?._id}`}>Edit</Link>
+                            <LikeBook book={currentBook} />
+                            <Link onClick={onDelete}>Delete</Link>
+                        </>
+                        : <p>Likes: {currentBook?.likes?.length}</p>}
+
                 </div>
 
                 <div className="flex flex-col overflow-auto h-80 border-y-2 border-solid">
