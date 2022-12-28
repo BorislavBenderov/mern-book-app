@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BookContext } from "../../contexts/BookContext";
 import { deletePost } from "../../api";
+import { LikeBook } from "../../components/like-book/LikeBook";
 
 export const BookDetails = () => {
     const { books, onDeleteBook } = useContext(BookContext);
@@ -44,7 +45,7 @@ export const BookDetails = () => {
 
                 <div className="flex justify-around">
                     <Link to={`/edit/books/${currentBook?._id}`}>Edit</Link>
-                    <p>Likes</p>
+                    <LikeBook book={currentBook} />
                     <Link onClick={onDelete}>Delete</Link>
                 </div>
 
