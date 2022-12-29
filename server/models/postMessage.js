@@ -18,7 +18,10 @@ const postSchema = mongoose.Schema({
             created: {
                 type: Date, default: Date.now()
             },
-            ownerId : {
+            ownerId: {
+                type: String
+            },
+            ownerName: {
                 type: String
             }
         }
