@@ -89,11 +89,12 @@ export const likePost = async (req, res) => {
 
 export const commentPost = async (req, res) => {
     const { id } = req.params;
-    const { comment } = req.body;
+    const { comment } = req.body.comment;
+    const { ownerName } = req.body.comment;
     const ownerId = req.userId;
 
     try {
-        const updatedPost = await PostMessage.findByIdAndUpdate(id, { $push: { comments: { comment, ownerId } } }, { new: true });
+        const updatedPost = await PostMessage.findByIdAndUpdate(id, { $push: { comments: { comment, ownerId, ownerName } } }, { new: true });
 
         res.status(200).json(updatedPost)
     } catch (error) {
