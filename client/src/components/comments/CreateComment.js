@@ -3,7 +3,7 @@ import { commentPost } from "../../api";
 import { BookContext } from "../../contexts/BookContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
-export const CreateComment = ({ bookId }) => {
+export const CreateComment = ({ bookId, scroll }) => {
     const [comment, setComment] = useState('');
     const { onCommentBook } = useContext(BookContext);
     const { loggedUser } = useContext(AuthContext);
@@ -21,6 +21,7 @@ export const CreateComment = ({ bookId }) => {
             .then((res) => {
                 onCommentBook(res.data.comments, bookId);
                 setComment('');
+                scroll.current.scrollIntoView({ behavior: 'smooth' });
             })
             .catch((err) => {
                 alert(err.message);

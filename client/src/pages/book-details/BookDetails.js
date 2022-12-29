@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BookContext } from "../../contexts/BookContext";
 import { deletePost } from "../../api";
@@ -12,6 +12,7 @@ export const BookDetails = () => {
     const { loggedUser } = useContext(AuthContext);
     const { bookId } = useParams();
     const navigate = useNavigate();
+    const scroll = useRef();
 
     const currentBook = books.find(book => book._id === bookId);
 
@@ -59,12 +60,12 @@ export const BookDetails = () => {
 
                 <div className="flex flex-col overflow-auto h-80 border-y-2 border-solid">
                     {currentBook?.comments?.length > 0
-                        ? currentBook?.comments?.map(comment => <Comments key={comment._id} bookId={currentBook?._id} comment={comment} />)
+                        ? currentBook?.comments?.map(comment => <Comments key={comment._id} bookId={currentBook?._id} comment={comment} scroll={scroll}/>)
                         : <p className="text-center mt-5">No comments for this book!</p>}
                 </div>
 
                 <div className="p-1">
-                    <CreateComment bookId={currentBook?._id} />
+                    <CreateComment bookId={currentBook?._id} scroll={scroll} />
                 </div>
             </div>
         </section>
