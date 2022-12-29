@@ -49,10 +49,19 @@ export const BookContextProvider = ({ children }) => {
         })
     }
 
+    const onCommentBook = (comments, bookId) => {
+        setBooks(state => {
+            const book = state.find(x => x._id === bookId);
 
+            return [
+                ...state.filter(x => x._id !== bookId),
+                { ...book, comments }
+            ]
+        })
+    }
 
     return (
-        <BookContext.Provider value={{ books, onCreatedBook, onEditedBook, onDeleteBook, onLikeBook }}>
+        <BookContext.Provider value={{ books, onCreatedBook, onEditedBook, onDeleteBook, onLikeBook, onCommentBook }}>
             {children}
         </BookContext.Provider>
     );
