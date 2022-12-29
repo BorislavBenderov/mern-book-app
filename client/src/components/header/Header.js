@@ -28,7 +28,7 @@ export const Header = () => {
                             </Link>
                         </>
                         : <> <span></span>
-                            <Link to="/mymovies" className="ml-5">
+                            <Link to="/my-books" className="ml-5">
                                 <span>My Books</span>
                             </Link>
                             <Link to="/create" className="ml-5">
