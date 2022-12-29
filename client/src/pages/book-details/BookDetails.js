@@ -4,6 +4,8 @@ import { BookContext } from "../../contexts/BookContext";
 import { deletePost } from "../../api";
 import { LikeBook } from "../../components/like-book/LikeBook";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Comments } from "../../components/comments/Comments";
+import { CreateComment } from "../../components/comments/CreateComment";
 
 export const BookDetails = () => {
     const { books, onDeleteBook } = useContext(BookContext);
@@ -53,32 +55,16 @@ export const BookDetails = () => {
                             <Link onClick={onDelete}>Delete</Link>
                         </>
                         : <p>Likes: {currentBook?.likes?.length}</p>}
-
                 </div>
 
                 <div className="flex flex-col overflow-auto h-80 border-y-2 border-solid">
-                    <div className="flex items-center m-1">
-                        <p className="mr-2 font-medium">Test User</p>
-                        <p className="">Good Book!</p>
-                        <p>comment like</p>
-                        <button className="">
-                            x
-                        </button>
-                    </div>
+                    {currentBook?.comments?.length > 0
+                        ? currentBook?.comments?.map(comment => <Comments key={comment._id} bookId={currentBook?._id} comment={comment} />)
+                        : <p className="text-center mt-5">No comments for this book!</p>}
                 </div>
 
                 <div className="p-1">
-                    <form className="flex">
-                        <label htmlFor="comment" />
-                        <textarea
-                            className="resize-none w-11/12 h-14 rounded-2xl pl-4 text-black"
-                            type="text"
-                            id="comment"
-                            name="comment"
-                            placeholder="Add a comment..."
-                        />
-                        <button type="submit" className="font-medium ml-2 text-black">post</button>
-                    </form>
+                    <CreateComment bookId={currentBook?._id} />
                 </div>
             </div>
         </section>
