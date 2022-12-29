@@ -101,3 +101,16 @@ export const commentPost = async (req, res) => {
     }
 }
 
+export const deleteCommentPost = async (req, res) => {
+    const { id } = req.params;
+    const { comment } = req.body;
+    const commentId = comment._id
+
+    try {
+        const updatedPost = await PostMessage.findByIdAndUpdate(id, { $pull: { comments: { _id: commentId } } }, { new: true });
+
+        res.status(200).json(updatedPost)
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
