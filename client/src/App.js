@@ -10,6 +10,7 @@ import { EditBook } from './pages/edit-book/EditBook';
 import { BookContextProvider } from "./contexts/BookContext";
 import { BookDetails } from "./pages/book-details/BookDetails";
 import { NotFound } from "./pages/not-found/NotFound";
+import { UserBooks } from './pages/user-books/UserBooks';
 import { ProtectedRoute } from './components/protected-route/ProtectedRoute';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/create" element={<CreateBook />} />
               <Route path="/edit/books/:bookId" element={<EditBook />} />
+              <Route path="/my-books" element={<UserBooks />} />
             </Route>
             <Route path='*' element={<NotFound />} />
             <Route path="/" element={<Dashboard />} />
