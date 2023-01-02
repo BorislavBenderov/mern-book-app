@@ -17,24 +17,24 @@ export const Header = () => {
                         Home
                     </Link>
                 </div>
-                <div className="">
+                <div className="flex">
                     {!loggedUser.result?._id
                         ? <>
-                            <Link to="/login" className="ml-5">
+                            <Link to="/login" className="ml-5 flex items-center">
                                 <span>Login</span>
                             </Link>
-                            <Link to="/register" className="ml-5">
+                            <Link to="/register" className="ml-5 flex items-center">
                                 <span>Register</span>
                             </Link>
                         </>
-                        : <> <span>{loggedUser.result?.email}</span>
-                            <Link to="/my-books" className="ml-5">
+                        : <> <span className='vsm:hidden'>{loggedUser.result?.email}</span>
+                            <Link to="/my-books" className="ml-5 flex items-center">
                                 <span>My Books</span>
                             </Link>
-                            <Link to="/create" className="ml-5">
+                            <Link to="/create" className="ml-5 flex items-center">
                                 <span>Create Book</span>
                             </Link>
-                            <Link to="" className="ml-5" onClick={onLogout}>
+                            <Link to="" className="ml-5 flex items-center" onClick={onLogout}>
                                 <span>Logout</span>
                             </Link>
                         </>}
