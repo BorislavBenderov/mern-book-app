@@ -14,7 +14,10 @@ export const Login = () => {
         const authData = Object.fromEntries(new FormData(e.target));
 
         if (authData.email === '' || authData.password === '') {
-            alert('Please fill all the fields!');
+            setErr('Please fill all the fields!');
+                setTimeout(() => {
+                    setErr('');
+                }, 3000);
             return;
         }
 
