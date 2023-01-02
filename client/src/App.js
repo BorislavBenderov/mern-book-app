@@ -17,7 +17,7 @@ function App() {
   return (
     <AuthContextProvider>
       <BookContextProvider>
-        <div className='max-w-6xl m-auto'>
+        <div className='max-w-7xl m-auto px-28 md:px-14 sm:px-2'>
           <Header />
           <Routes>
             <Route element={<ProtectedRoute />}>
