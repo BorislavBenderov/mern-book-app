@@ -19,6 +19,13 @@ export const CreateBook = () => {
             return;
         }
 
+        if (formData.description.length > 265) {
+            alert('Description is too long!');
+            return;
+        }
+
+        
+
         const bookData = {
             ...formData,
             ownerId: loggedUser.result._id
@@ -50,8 +57,8 @@ export const CreateBook = () => {
             <label
                 className='block mt-8 text-base font-medium'
                 htmlFor="description">Description</label>
-            <input
-                className='block h-12 w-full bg-indigo-400 rounded-sm px-3 mt-2 text-sm'
+            <textarea
+                className='block h-32 w-full bg-indigo-400 rounded-sm px-3 mt-2 text-sm resize-none'
                 type="text"
                 placeholder="Description"
                 id="description"
