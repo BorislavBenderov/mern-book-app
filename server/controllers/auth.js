@@ -10,7 +10,7 @@ export const register = async (req, res) => {
 
         if (user) return res.status(400).json({ message: 'User already exists!' });
 
-        if (password !== confirmPassword) return res.status(400).json({ message: 'Password do not match!' })
+        if (password !== confirmPassword) return res.status(400).json({ message: 'Your password and confirmation password do not match!' })
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
@@ -41,7 +41,7 @@ export const login = async (req, res) => {
             user.password
         );
 
-        if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalid credentials' });
+        if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalid credentials!' });
 
         const token = jwt.sign(
             { id: user._id, email: user.email },
