@@ -34,6 +34,11 @@ export const EditBook = () => {
             return;
         }
 
+        if (formData.description.length > 265) {
+            alert('Description is too long!');
+            return;
+        }
+
         updatePost(currentBook._id, formData)
             .then((editedBook) => {
                 onEditedBook(currentBook._id, editedBook.data);
@@ -63,8 +68,8 @@ export const EditBook = () => {
             <label
                 className='block mt-8 text-base font-medium'
                 htmlFor="description">Description</label>
-            <input
-                className='block h-12 w-full bg-indigo-400 rounded-sm px-3 mt-2 text-sm'
+            <textarea
+                className='block h-32 w-full bg-indigo-400 rounded-sm px-3 mt-2 text-sm resize-none'
                 type="text"
                 placeholder="Description"
                 id="description"
