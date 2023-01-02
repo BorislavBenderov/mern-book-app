@@ -7,6 +7,7 @@ export const Login = () => {
     const { userLogin } = useContext(AuthContext);
     const [err, setErr] = useState('');
     const navigate = useNavigate();
+
     const onLogin = (e) => {
         e.preventDefault();
 
@@ -24,6 +25,9 @@ export const Login = () => {
             })
             .catch((err) => {
                 setErr(err.response.data.message);
+                setTimeout(() => {
+                    setErr('');
+                }, 3000);
             })
     }
     return (
