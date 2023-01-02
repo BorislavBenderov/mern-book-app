@@ -21,7 +21,7 @@ export const CreateComment = ({ bookId, scroll }) => {
             .then((res) => {
                 onCommentBook(res.data.comments, bookId);
                 setComment('');
-                scroll.current.scrollIntoView({ behavior: 'smooth' });
+                scroll.current?.scrollIntoView({ behavior: 'smooth' });
             })
             .catch((err) => {
                 alert(err.message);
