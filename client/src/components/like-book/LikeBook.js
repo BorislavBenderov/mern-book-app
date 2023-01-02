@@ -6,7 +6,6 @@ import { BookContext } from "../../contexts/BookContext";
 export const LikeBook = ({ book }) => {
     const { loggedUser } = useContext(AuthContext);
     const { onLikeBook } = useContext(BookContext);
-    console.log(book);
 
     const onLike = () => {
         likePost(book._id)

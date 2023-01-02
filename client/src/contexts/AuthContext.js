@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
         setLoggedUser(result);
     }
 
-    const userLogout = (result) => {
+    const userLogout = () => {
         setLoggedUser({});
     }
 
