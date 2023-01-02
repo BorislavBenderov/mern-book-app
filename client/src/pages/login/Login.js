@@ -1,10 +1,11 @@
 import { login } from "../../api";
 import { useNavigate } from 'react-router-dom';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const Login = () => {
     const { userLogin } = useContext(AuthContext);
+    const [err, setErr] = useState('');
     const navigate = useNavigate();
     const onLogin = (e) => {
         e.preventDefault();
@@ -22,8 +23,7 @@ export const Login = () => {
                 navigate('/');
             })
             .catch((err) => {
-                console.log(err);
-                alert(err.message);
+                setErr(err.response.data.message);
             })
     }
     return (
@@ -52,7 +52,7 @@ export const Login = () => {
             <button
                 className='mt-12 w-full bg-white py-4 text-base font-semibold rounded cursor-pointer text-blue-600'
                 type="submit">Log In</button>
-            <p className=""></p>
+            <p className="mt-2 text-center text-red-500 font-bold">{err}</p>
         </form>
     );
 }
