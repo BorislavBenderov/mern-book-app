@@ -32,20 +32,20 @@ export const BookDetails = () => {
     }
 
     return (
-        <section className="flex w-4/5 m-auto">
-            <div className="w-1/2">
+        <section className="flex w-full m-auto xl:flex-col">
+            <div className="w-1/2 xl:w-full">
                 <img
-                    className='rounded-l-2xl w-full'
+                    className='rounded-l-2xl w-full xl:rounded-t-2xl xl:rounded-b-none'
                     src={currentBook?.image}
                     alt=""
                 />
             </div>
-            <div className="rounded-r-2xl border-2 border-solid border-black w-1/2">
+            <div className="rounded-r-2xl border-2 border-solid border-black w-1/2 xl:w-full xl:rounded-b-2xl xl:rounded-t-none">
 
                 <div className="text-center">
-                    <p className="text-xl">Title: {currentBook?.title}</p>
-                    <p>Description: {currentBook?.description}</p>
-                    <p>Type: {currentBook?.type}</p>
+                    <p className="text-xl mb-2">Title: {currentBook?.title}</p>
+                    <p className="mb-2">Description: {currentBook?.description}</p>
+                    <p className="mb-2">Type: {currentBook?.type}</p>
                 </div>
 
                 <div className="flex justify-around">
@@ -60,7 +60,7 @@ export const BookDetails = () => {
 
                 <div className="flex flex-col overflow-auto h-80 border-y-2 border-solid">
                     {currentBook?.comments?.length > 0
-                        ? currentBook?.comments?.map(comment => <Comments key={comment._id} bookId={currentBook?._id} comment={comment} scroll={scroll}/>)
+                        ? currentBook?.comments?.map(comment => <Comments key={comment._id} bookId={currentBook?._id} comment={comment} scroll={scroll} />)
                         : <p className="text-center mt-5">No comments for this book!</p>}
                 </div>
 
