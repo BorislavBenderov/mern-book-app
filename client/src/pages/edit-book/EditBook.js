@@ -39,6 +39,11 @@ export const EditBook = () => {
             return;
         }
 
+        if (!formData.image.startsWith('http')) {
+            alert('Add a valid image!');
+            return;
+        }
+
         updatePost(currentBook._id, formData)
             .then((editedBook) => {
                 onEditedBook(currentBook._id, editedBook.data);
