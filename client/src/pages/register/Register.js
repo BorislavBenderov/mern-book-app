@@ -14,6 +14,9 @@ export const Register = () => {
 
         if (authData.email === '' || authData.password === '' || authData.confirmPassword === '') {
             setErr('Please fill all the fields!');
+            setTimeout(() => {
+                setErr('');
+            }, 3000);
             return;
         }
 
