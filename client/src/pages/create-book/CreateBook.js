@@ -1,5 +1,5 @@
 import { createPost } from "../../api";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { BookContext } from "../../contexts/BookContext";
@@ -7,6 +7,7 @@ import { BookContext } from "../../contexts/BookContext";
 export const CreateBook = () => {
     const { loggedUser } = useContext(AuthContext);
     const { onCreatedBook } = useContext(BookContext);
+    const [err, setErr] = useState('');
     const navigate = useNavigate();
 
     const onCreate = (e) => {
@@ -15,17 +16,26 @@ export const CreateBook = () => {
         const formData = Object.fromEntries(new FormData(e.target));
 
         if (formData.title === '' || formData.description === '' || formData.image === '' || formData.type === '') {
-            alert('Please fill all the fields!');
+            setErr('Please fill all the fields!');
+            setTimeout(() => {
+                setErr('');
+            }, 3000);
             return;
         }
 
         if (formData.description.length > 265) {
-            alert('Description is too long!');
+            setErr('Description is too long!');
+            setTimeout(() => {
+                setErr('');
+            }, 3000);
             return;
         }
 
         if (!formData.image.startsWith('http')) {
-            alert('Add a valid image!');
+            setErr('Add a valid image!');
+            setTimeout(() => {
+                setErr('');
+            }, 3000);
             return;
         }
 
@@ -40,7 +50,10 @@ export const CreateBook = () => {
                 navigate('/');
             })
             .catch((err) => {
-                alert(err.message);
+                setErr(err.response.data.message);
+                setTimeout(() => {
+                    setErr('');
+                }, 3000);
             })
     }
     return (
@@ -87,7 +100,7 @@ export const CreateBook = () => {
             <button
                 className='mt-12 w-full bg-white py-4 text-base font-semibold rounded cursor-pointer text-blue-600'
                 type="submit">Create</button>
-            <p className=""></p>
+            <p className="mt-2 text-center text-red-500 font-bold">{err}</p>
         </form>
     );
 }
