@@ -12,7 +12,7 @@ export const UserBooks = () => {
     return (
         <>
             <section className="mb-16">
-                <div className="relative h-96 overflow-hidden rounded-2xl">
+                <div className="relative h-96 overflow-hidden rounded-2xl md:hidden">
                     <img
                         src={BOOK}
                         className=""
@@ -24,7 +24,7 @@ export const UserBooks = () => {
                 </div>
             </section>
             <section className="mb-16">
-                <div className={userBooks.length > 0 ? "grid grid-cols-7 gap-8 mb-16" : ''}>
+                <div className={userBooks.length > 0 ? "grid grid-cols-auto gap-8 mb-16" : ''}>
                     {userBooks?.length > 0
                         ? userBooks.map(book => <BookCard key={book._id} book={book} />)
                         : <p className='text-center'>No Books in Database!</p>}
