@@ -24,7 +24,10 @@ export const CreateBook = () => {
             return;
         }
 
-        
+        if (!formData.image.startsWith('http')) {
+            alert('Add a valid image!');
+            return;
+        }
 
         const bookData = {
             ...formData,
