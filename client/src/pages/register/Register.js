@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../api";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const Register = () => {
     const { userLogin } = useContext(AuthContext);
+    const [err, setErr] = useState('');
     const navigate = useNavigate();
     const onRegister = (e) => {
         e.preventDefault();
@@ -12,12 +13,7 @@ export const Register = () => {
         const authData = Object.fromEntries(new FormData(e.target));
 
         if (authData.email === '' || authData.password === '' || authData.confirmPassword === '') {
-            alert('Please fill all the fields!');
-            return;
-        }
-
-        if (authData.password !== authData.confirmPassword) {
-            alert('Your password and confirmation password do not match!');
+            setErr('Please fill all the fields!');
             return;
         }
 
@@ -27,7 +23,7 @@ export const Register = () => {
                 navigate('/');
             })
             .catch((err) => {
-                alert(err.message);
+                setErr(err.response.data.message);
             })
     }
 
@@ -66,7 +62,7 @@ export const Register = () => {
             <button
                 className='mt-12 w-full bg-white py-4 text-base font-semibold rounded cursor-pointer text-blue-600'
                 type="submit">Register</button>
-            <p className=""></p>
+            <p className="mt-2 text-center text-red-500 font-bold">{err}</p>
         </form>
     );
 }
