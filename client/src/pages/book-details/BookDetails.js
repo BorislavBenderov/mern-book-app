@@ -64,9 +64,11 @@ export const BookDetails = () => {
                         : <p className="text-center mt-5">No comments for this book!</p>}
                 </div>
 
-                <div className="p-1">
-                    <CreateComment bookId={currentBook?._id} scroll={scroll} />
-                </div>
+                {loggedUser?.result?._id
+                    ? <div className="p-1">
+                        <CreateComment bookId={currentBook?._id} scroll={scroll} />
+                    </div>
+                    : ''}
             </div>
         </section>
     );
