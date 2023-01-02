@@ -9,10 +9,9 @@ export const Dashboard = () => {
     return (
         <>
             <section className="mb-16">
-                <div className="relative h-96 overflow-hidden rounded-2xl">
+                <div className="relative h-96 overflow-hidden rounded-2xl md:hidden">
                     <img
                         src={BOOK}
-                        className=""
                         alt=""
                     />
                     <div className="absolute right-20 bottom-14 left-20">
@@ -21,8 +20,8 @@ export const Dashboard = () => {
                 </div>
             </section>
             <section className="mb-16">
-                <div className="grid grid-cols-7 gap-8 mb-16">
-                    {books.length > 0
+                <div className="grid grid-cols-auto gap-8 mb-16">
+                    {books?.length > 0
                         ? books.map(book => <BookCard key={book._id} book={book} />)
                         : <p>No Books in Database!</p>}
                 </div>
