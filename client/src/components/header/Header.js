@@ -27,7 +27,7 @@ export const Header = () => {
                                 <span>Register</span>
                             </Link>
                         </>
-                        : <> <span></span>
+                        : <> <span>{loggedUser.result?.email}</span>
                             <Link to="/my-books" className="ml-5">
                                 <span>My Books</span>
                             </Link>
