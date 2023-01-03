@@ -32,6 +32,10 @@ app.use(cors());
 app.use('/posts', postRoute);
 app.use('/auth', authRoute);
 
+app.get('/', (req, res) => {
+    res.send('APP IS RUNNING.');
+});
+
 app.listen(process.env.PORT, () => {
     connect();
     console.log("Connected to backend.");
