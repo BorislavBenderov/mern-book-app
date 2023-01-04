@@ -50,7 +50,7 @@ export const BookDetails = () => {
 
                 <div className="flex justify-around">
                     {loggedUser?.result?._id
-                        ? loggedUser?.result?._id === currentBook.ownerId
+                        ? loggedUser?.result?._id === currentBook?.ownerId
                             ? <>
                                 <Link to={`/edit/books/${currentBook?._id}`}>Edit</Link>
                                 <LikeBook book={currentBook} />
