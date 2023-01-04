@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Book Catalogue Application created with MERN stack
+![My Image](./client/src/assets/dashboard-min.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+This is Book Catalogue Application created with Node JS, Express, Mongo DB, React JS and TailwindCSS. Users have
+possibility to register and login. They can interact with each other with posts and comments. They can create, edit, like and delete posts. Users have possibility to make comments on different posts and delete their comments. Users have page with their created books.
 
-In the project directory, you can run:
+## Services
 
-### `npm start`
+### Login
+![My Image](./client/src/assets/login-min.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This service is initialized with two users, which can be used for immediate testing:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- borko@abv.bg: 123456
+- gabi@abv.bg: 123456
 
-### `npm test`
+### Register
+![My Image](./client/src/assets/register-min.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Create a new user by entered email, password and confirmation password.
 
-### `npm run build`
+### Home
+![My Image](./client/src/assets/dashboard-min.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After login or register user will be redirect to a home page. On this page user can see all posts in the 
+application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Book Details
+![My Image](./client/src/assets/bookdetails-min.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When user click on a given post in home page he can see all details of this post. On this page user can like post, make a comments and delete a comments.
 
-### `npm run eject`
+### Create Post
+![My Image](./client/src/assets/create-min.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+When user click on a create book button he will see create new book page. On this page user can create a post with title,description, image url and type.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Edit Post
+![My Image](./client/src/assets/edit-min.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+When user click on edit button on some of his books in book details page, user can possibility to edit current post title, description, image url and type.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Delete Post
 
-## Learn More
+When user click on delete button on some of his books in book details page, user will be asked to delete this post. If he confirm post will be deleted.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Logout
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When user click on the sixth icon in navigation panel his session has expired.
 
-### Code Splitting
+### Guest Users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Guest users can see dashboard, book details, login and register pages.
 
-### Analyzing the Bundle Size
+### Live Demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://mern-book-app-uq21.onrender.com
