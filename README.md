@@ -42,6 +42,11 @@ When user click on a create book button he will see create new book page. On thi
 
 When user click on edit button on some of his books in book details page, user can possibility to edit current post title, description, image url and type.
 
+### User Posts
+![My Image](./client/src/assets/userbooks-min.png)
+
+When user click on My Books button he will see all of posts who he created.
+
 ### Delete Post
 
 When user click on delete button on some of his books in book details page, user will be asked to delete this post. If he confirm post will be deleted.
