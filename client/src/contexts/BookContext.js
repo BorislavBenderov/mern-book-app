@@ -5,11 +5,13 @@ export const BookContext = createContext();
 
 export const BookContextProvider = ({ children }) => {
     const [books, setBooks] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         fetchPosts()
             .then((res) => {
                 setBooks(res.data);
+                setIsLoading(true);
             })
             .catch((err) => {
                 alert(err.message);
@@ -61,7 +63,7 @@ export const BookContextProvider = ({ children }) => {
     }
 
     return (
-        <BookContext.Provider value={{ books, onCreatedBook, onEditedBook, onDeleteBook, onLikeBook, onCommentBook }}>
+        <BookContext.Provider value={{ books, onCreatedBook, onEditedBook, onDeleteBook, onLikeBook, onCommentBook, isLoading }}>
             {children}
         </BookContext.Provider>
     );
