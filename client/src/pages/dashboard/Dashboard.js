@@ -4,7 +4,7 @@ import { BookCard } from '../../components/book-card/BookCard';
 import { BookContext } from '../../contexts/BookContext';
 
 export const Dashboard = () => {
-    const { books } = useContext(BookContext);
+    const { books, isLoading } = useContext(BookContext);
 
     return (
         <>
@@ -21,9 +21,12 @@ export const Dashboard = () => {
             </section>
             <section className="mb-16">
                 <div className="grid grid-cols-auto gap-8 mb-16">
-                    {books?.length > 0
-                        ? books.map(book => <BookCard key={book._id} book={book} />)
-                        : <p>No Books in Database!</p>}
+                    {isLoading ?
+                        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        :
+                        books?.length > 0
+                            ? books.map(book => <BookCard key={book._id} book={book} />)
+                            : <p>No Books in Database!</p>}
                 </div>
             </section>
         </>
