@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export const Register = () => {
     const { userLogin } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
     const [err, setErr] = useState('');
     const navigate = useNavigate();
     const onRegister = (e) => {
@@ -20,13 +21,16 @@ export const Register = () => {
             return;
         }
 
+        setLoading(true);
         register(authData)
             .then((req) => {
                 userLogin(req.data);
                 navigate('/');
+                setLoading(false);
             })
             .catch((err) => {
                 setErr(err.response.data.message);
+                setLoading(false);
                 setTimeout(() => {
                     setErr('');
                 }, 3000);
@@ -67,7 +71,7 @@ export const Register = () => {
                 name="confirmPassword" />
             <button
                 className='mt-12 w-full bg-white py-4 text-base font-semibold rounded cursor-pointer text-blue-600'
-                type="submit">Register</button>
+                type="submit">{loading ? "Loading..." : "Register"}</button>
             <p className="mt-2 text-center text-red-500 font-bold">{err}</p>
         </form>
     );

@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 export const Login = () => {
     const { userLogin } = useContext(AuthContext);
     const [err, setErr] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const onLogin = (e) => {
@@ -21,13 +22,16 @@ export const Login = () => {
             return;
         }
 
+        setLoading(true);
         login(authData)
             .then((req) => {
                 userLogin(req.data);
                 navigate('/');
+                setLoading(false);
             })
             .catch((err) => {
                 setErr(err.response.data.message);
+                setLoading(false);
                 setTimeout(() => {
                     setErr('');
                 }, 3000);
@@ -58,7 +62,7 @@ export const Login = () => {
                 name="password" />
             <button
                 className='mt-12 w-full bg-white py-4 text-base font-semibold rounded cursor-pointer text-blue-600'
-                type="submit">Log In</button>
+                type="submit">{loading ? "Loading..." : "Log In"}</button>
             <p className="mt-2 text-center text-red-500 font-bold">{err}</p>
         </form>
     );
