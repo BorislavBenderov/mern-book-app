@@ -45,7 +45,7 @@ export const EditBook = () => {
     }
 
     if (formData.description.length > 265) {
-      setErr("Add a valid image!");
+      setErr("Add a valid description!");
       setTimeout(() => {
         setErr("");
       }, 3000);
